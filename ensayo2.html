@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+</style>
+<body>
+    <canvas id="game"></canvas>
+    <h2 id="scoreboard"></h2>
+    <script>
+        const canvas = document.getElementById('game');
+        const ctx = canvas.getContext('2d');
+        class ModelGame{
+            constructor(ctx){
+                this.ctx = ctx;
+                this.fallingPiece = 'hola';
+            }
+            down(){
+                this.fallingPiece = 'adios';
+            }
+        }
+        const model = new ModelGame(ctx);
+        if(model.fallingPiece === 'hola'){
+            model.fallingPiece = 'adios';
+        }
+        console.log(model.fallingPiece);
+    </script>
+</body>
+</html>

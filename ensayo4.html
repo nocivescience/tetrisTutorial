@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+</style>
+<body>
+    <canvas id="game"></canvas>
+    <h2 id="scoreboard"></h2>
+    <script>
+        const canvas = document.getElementById('game');
+        const ctx = canvas.getContext('2d');
+        class Piece{
+            constructor(x, y, shape, ctx){
+                this.x = x;
+                this.y = y;
+                this.shape = shape;
+                this.ctx = ctx;
+                this.color = 'red';
+            }
+        }
+        class ModelGame{
+            constructor(ctx){
+                this.ctx = ctx;
+                this.fallingPiece = null;
+            }
+            down(){
+                if(this.fallingPiece !== null){
+                    this.fallingPiece.y += 1;
+                    this.fallingPiece.x+=10;
+                }
+                return this.fallingPiece;
+            }
+        }
+        const model = new ModelGame(ctx);
+        if(model.fallingPiece === null){
+            model.fallingPiece = new Piece(0, 0, [[1, 1, 1], [0, 1, 0], [0, 1, 0]], ctx);
+        }
+        setInterval(() => {
+            const updatePiece=model.down();
+            console.log(updatePiece.y, updatePiece.x);
+        }, 1000);
+    </script>
+</body>
+</html>
